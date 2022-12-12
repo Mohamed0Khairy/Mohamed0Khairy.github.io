@@ -3,8 +3,8 @@
 
 #define mq5   35
 #define phpin    34
-#define CHANNEL_ID 1955465
-#define CHANNEL_API_KEY "JXP1EU0EL6EV1T1B"
+#define CHANNEL_ID 1976657    // the channel id 
+#define CHANNEL_API_KEY "12C59YVUBGKRHS6P"  //the  Api key of the channel 
 
 
 int gas, so2lvl;
@@ -19,11 +19,11 @@ float Value=0;
 unsigned long lastTime = 0;
 unsigned long timerDelay = 30000;
 
-unsigned long myChannelNumber = 1;
+unsigned long myChannelNumber = 2; // the channel number 
 
-String apiKey = "JXP1EU0EL6EV1T1B";     //  Enter your Write API key from ThingSpeak
-const char* ssid =  "Mohamed Khairy";     // replace with your wifi ssid and password
-const char* password =  "32100123";  
+String apiKey = "JXP1EU0EL6EV1T1B";     
+const char* ssid =  "Mohamed Khairy";     // the network that connect the ESP 
+const char* password =  "32100123";       // network password
 const char* server = "api.thingspeak.com";
 WiFiClient client;
 
@@ -37,11 +37,11 @@ void setup() {
   Serial.println("Connecting to ");
   Serial.println(ssid);
   WiFi.begin(ssid, password);
-    /*while (WiFi.status() != WL_CONNECTED)
+   while (WiFi.status() != WL_CONNECTED)
      {
             Serial.println("Wifi connecting...");
             delay(500);
-     }*/
+     }
     while (WiFi.status() != WL_CONNECTED)
     {
             Serial.print(".");
@@ -69,16 +69,16 @@ void loop() {
       Serial.println("\nConnected.");
     }
   
-//  for (j = 0; j < 10; j++) {
-//    SensorValue[j] = analogRead(sensor);
-//    delay(20);
-//  }
-//
-//  // we now have 10 readings, so average them
-//  result = 0;
-//  for (j = 0; j < 10; j++) {
-//    result = result + SensorValue[j]; // add them up
-//  }
+  for (j = 0; j < 10; j++) {
+     SensorValue[j] = analogRead(sensor);
+     delay(20);
+    }
+
+    // we now have 10 readings, so average them
+    result = 0;
+    for (j = 0; j < 10; j++) {
+    result = result + SensorValue[j]; // add them up
+   }
   result = analogRead(mq5);               // this is our averaged result
   so2lvl = result - 400 ;
   Serial.print("SO2 LEVEL = ");
